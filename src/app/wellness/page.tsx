@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Slider } from "@/components/ui/slider"
-import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/src/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/src/components/ui/card"
+import { Slider } from "@/src/components/ui/slider"
+import { Textarea } from "@/src/components/ui/textarea"
 import { Heart, ArrowLeft, Smile, Frown, Meh, Brain, Moon, Droplets, Activity } from "lucide-react"
 import Link from "next/link"
 

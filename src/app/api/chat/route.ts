@@ -1,6 +1,9 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { GoogleGenerativeAI } from "@google/generative-ai"
 
+// Define the type for prompts
+type PromptCategory = 'pregnancy' | 'postpartum' | 'nutrition' | 'mental_health' | 'baby_development' | 'labor_delivery' | 'breastfeeding' | 'safety' | 'fathers' | 'general';
+
 // Initialize Gemini 1.5 Flash (stable and widely available)
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "")
 const model = genAI.getGenerativeModel({
@@ -13,7 +16,7 @@ const model = genAI.getGenerativeModel({
 })
 
 // Enhanced prompts with cultural sensitivity and medical accuracy (adapted from your Python backend)
-const prompts = {
+const prompts: Record<PromptCategory, string> = {
   pregnancy: `You are a trusted AI doctor and pregnancy companion for expecting mothers. Answer "[user_input]" with medical-grade, culturally sensitive advice for a [role] during [trimester] of pregnancy in [time_context].
 
 Guidelines:
@@ -158,7 +161,7 @@ Respond conversationally but professionally with cultural sensitivity. Always pr
 }
 
 // Enhanced input categorization with cultural keywords
-function categorizeInput(input: string): string {
+function categorizeInput(input: string): PromptCategory {
   const lowerInput = input.toLowerCase()
 
   // Pregnancy-related keywords (English and some cultural terms)
